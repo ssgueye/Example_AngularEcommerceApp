@@ -9,9 +9,10 @@ import { registerLocaleData } from '@angular/common';
 import * as fr from '@angular/common/locales/fr';
 import { ProductListComponent } from './product-list/product-list.component';
 import { HeaderComponent } from './header/header.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   declarations: [
     AppComponent,
     HelloComponent,

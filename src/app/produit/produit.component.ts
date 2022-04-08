@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product.model';
+import { ProduitService } from '../service/produit.service';
 
 @Component({
   selector: 'app-produit',
@@ -8,11 +9,12 @@ import { Product } from '../models/product.model';
 })
 export class ProduitComponent implements OnInit {
   @Input() product!: Product;
-
   pay!: String;
   nbProductAdded! : number;
   text!: String;
   totalPay!: number;
+
+  constructor(private produitService: ProduitService){}
   
   ngOnInit() {
     this.pay = "Pay";
@@ -25,7 +27,7 @@ export class ProduitComponent implements OnInit {
     if(this.product.stock > 0)
     {
       
-      this.product.stock--;
+      this.produitService.decrementStock(this.product.id);
       this.nbProductAdded++;
       this.totalPay += this.product.price; 
     }
